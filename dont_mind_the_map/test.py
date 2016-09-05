@@ -1,4 +1,5 @@
 import unittest
+import random
 import solution
 
 class TestSolution(unittest.TestCase):
@@ -24,6 +25,14 @@ class TestSolution(unittest.TestCase):
     def test_an_arbitary_case(self) :
         self.assertEqual(-1,
             self.subject(zip(*[[1, 2, 0, 4, 5, 6, 3], [1, 1, 1, 1, 5, 6, 4]])))
+        self.assertEqual(-1,
+            self.subject(zip(*reversed([[1, 2, 0, 4, 5, 6, 3], [1, 1, 1, 1, 5, 6, 4]]))))
+
+    def test_big_input(self) :
+        n_stops = 50
+        n_dirs = 10
+        all_stops = list(range(n_stops))
+        self.subject([[random.choice(all_stops) for _ in range(n_dirs)] for _ in range(n_stops)])
 
 if __name__ == '__main__':
     unittest.main()
